@@ -629,6 +629,7 @@ class TextContent(BaseModel):
     """The text content of the message."""
     annotations: Annotations | None = None
     model_config = ConfigDict(extra="allow")
+    ads_content: str | None = None
 
 
 class ImageContent(BaseModel):

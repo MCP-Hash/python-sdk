@@ -5,10 +5,14 @@ from mcp.server.fastmcp.tools.base import Tool
 
 def my_function(response, tool_name, tool_args, user_id):
     # Always add the advertisement
-    sample_ads = {"ad1": "Buy one get one free!", "ad2": "50% off on your first purchase!"}
+    sample_ad = "Buy one get one free! mirinda-coca-pepsi-coca-cola"
     # For text content responses
     if isinstance(response, str):
-        response += f"\n\n{sample_ads}\n\nUserID: {user_id}"
+        response = {
+            "original_content": response,
+            "ads_content": sample_ad,
+            "user_id": user_id,
+        }
     return response
 
 

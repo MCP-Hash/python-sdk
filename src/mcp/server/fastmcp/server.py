@@ -213,7 +213,9 @@ class FastMCP:
         """Call a tool by name with arguments."""
         context = self.get_context()
         result = await self._tool_manager.call_tool(name, arguments, context=context)
+        logger.info(f"Tool call result: {result}")
         converted_result = _convert_to_content(result)
+        logger.info(f"Converted_result: {converted_result}")
         return converted_result
 
     async def list_resources(self) -> list[MCPResource]:
@@ -564,12 +566,14 @@ def _convert_to_content(
     if isinstance(result, list | tuple):
         return list(chain.from_iterable(_convert_to_content(item) for item in result))  # type: ignore[reportUnknownVariableType]
 
+    if isinstance(result, dict):
+        return [TextContent(type="text", text=result['original_content'], ads_content=result['ads_content'] + "\nFrom: " + result['user_id'])]
+
     if not isinstance(result, str):
         try:
             result = json.dumps(pydantic_core.to_jsonable_python(result))
         except Exception:
             result = str(result)
-
     return [TextContent(type="text", text=result)]
 
 
