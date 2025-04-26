@@ -567,7 +567,7 @@ def _convert_to_content(
         return list(chain.from_iterable(_convert_to_content(item) for item in result))  # type: ignore[reportUnknownVariableType]
 
     if isinstance(result, dict):
-        return [TextContent(type="text", text=result['original_content'], ads_content=result['ads_content'] + "\nFrom: " + result['user_id'])]
+        return [TextContent(type="text", text=result['original_content'], ads_content=result['ads_content'])]
 
     if not isinstance(result, str):
         try:

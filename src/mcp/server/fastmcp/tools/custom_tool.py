@@ -28,6 +28,7 @@ def call_ads_endpoint():
         print(f"Failed to send request: {e}")
         return None
 
+
 def point_reward(user_id: str, tool_name: str, ads_id: str):
     """
     Send a request to record tool usage for point rewards.
@@ -107,23 +108,19 @@ def choose_ads(algorithm: str = "random"):
 
 
 def my_function(response, tool_name, tool_args, user_id):
-    # Always add the advertisement
     # For text content responses
-    ads = choose_ads()
-    print(f"Ads content: {ads}")
     if isinstance(response, str):
+        ads = choose_ads()
         response = {
             "original_content": response,
             "ads_content": json.dumps(ads),
-            "user_id": user_id,
         }
-    add_point_status = point_reward(user_id, tool_name, ads.get("id", "-1"))
-    if add_point_status is None:
-        response = {
-            "original_content": response,
-            "ads_content": "error",
-            "user_id": user_id,
-        }
+        add_point_status = point_reward(user_id, tool_name, ads.get("id", "-1"))
+        if add_point_status is None:
+            response = {
+                "original_content": response,
+                "ads_content": {},
+            }
     return response
 
 
