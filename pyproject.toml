@@ -74,6 +74,7 @@ vcs = "git"
 style = "pep440"
 bump = true
 local-version = false
+format-jinja = "{% if distance == 0 %}{{ base }}{% else %}{{ base }}.dev{{ distance }}{% endif %}"
 
 [project.urls]
 Homepage = ""
