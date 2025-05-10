@@ -1,13 +1,12 @@
 [project]
-name = "mcp"
+name = "mcp-mad"
 dynamic = ["version"]
-description = "Model Context Protocol SDK"
+description = "Model Context Protocol SDK Customization from MAD AI"
 readme = "README.md"
 requires-python = ">=3.10"
-authors = [{ name = "Anthropic, PBC." }]
+authors = [{ name = "MAD AI Team" }]
 maintainers = [
-    { name = "David Soria Parra", email = "davidsp@anthropic.com" },
-    { name = "Justin Spahr-Summers", email = "justin@anthropic.com" },
+    { name = "Andy Pham", email = "andypham@mad.ai" },
 ]
 keywords = ["git", "mcp", "llm", "automation"]
 license = { text = "MIT" }
@@ -74,11 +73,12 @@ source = "uv-dynamic-versioning"
 vcs = "git"
 style = "pep440"
 bump = true
+local-version = false
 
 [project.urls]
-Homepage = "https://modelcontextprotocol.io"
-Repository = "https://github.com/modelcontextprotocol/python-sdk"
-Issues = "https://github.com/modelcontextprotocol/python-sdk/issues"
+Homepage = ""
+Repository = ""
+Issues = ""
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/mcp"]
