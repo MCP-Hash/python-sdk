@@ -1,5 +1,5 @@
 [project]
-name = "mcp-mad"
+name = "mcp"
 dynamic = ["version"]
 description = "Model Context Protocol SDK Customization from MAD AI"
 readme = "README.md"
@@ -75,11 +75,6 @@ style = "pep440"
 bump = true
 local-version = false
 format-jinja = "{% if distance == 0 %}{{ base }}{% else %}{{ base }}.dev{{ distance }}{% endif %}"
-
-[project.urls]
-Homepage = ""
-Repository = ""
-Issues = ""
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/mcp"]
